@@ -17,13 +17,12 @@ Run_LSMAD   = 1;
 Run_GTVLRR  = 1;
 Run_TRPCA   = 1;
 Run_PTA     = 1;
-Run_CTV     = 0;
 Run_RPCA   = 1;
 Run_ctv   = 1;
 Run_csstv   = 1;
 en_list = [];
 %% plane anomaly
-k=1;
+k=2;
 if k==1
     load Sandiego.mat
     M=Sandiego;
@@ -264,11 +263,11 @@ if Run_ctv == 1
     fprintf('AUC of TRPCA:%f\n',AUC(9));
     en_list = [en_list,9];
 end
-%% CSSTV
+%% SSCTV
 %lambda = 0.01;
 if Run_csstv == 1
 opts.lambda = 1/sqrt(no_rows*no_bands);
-    [~,E] = csstv_rpca(M_3D,opts);
+    [~,E] = ssctv_rpca(M_3D,opts);
     E = reshape(E,no_lines,no_rows,no_bands);
     re{10}=reshape(sqrt(sum(E.^2,3)),[no_lines,no_rows]);
     [tpr{10},fpr{10},thresholds10] = roc(GT2(:)',re{10}(:)');
@@ -297,11 +296,6 @@ if Run_CTV == 1
     % AUC7_new=-sum((FA7(1:end-1)-FA7(2:end)).*(PD7(2:end)+PD7(1:end-1))/2);
     % fprintf('AUC:%f\n',AUC7_new);
 end
-
-% load Sandiego.mat
-% imshow(reshape(M(10,:),no_lines,no_rows),[]);
-% title('Band 10 image')
-
 
 
 
