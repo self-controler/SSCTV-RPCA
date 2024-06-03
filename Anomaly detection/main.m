@@ -19,7 +19,7 @@ Run_TRPCA   = 1;
 Run_PTA     = 1;
 Run_RPCA   = 1;
 Run_ctv   = 1;
-Run_csstv   = 1;
+Run_ssctv   = 1;
 en_list = [];
 %% plane anomaly
 k=2;
@@ -265,7 +265,7 @@ if Run_ctv == 1
 end
 %% SSCTV
 %lambda = 0.01;
-if Run_csstv == 1
+if Run_ssctv == 1
 opts.lambda = 1/sqrt(no_rows*no_bands);
     [~,E] = ssctv_rpca(M_3D,opts);
     E = reshape(E,no_lines,no_rows,no_bands);
