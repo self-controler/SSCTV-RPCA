@@ -2,7 +2,7 @@ clear all;clc;
 % addpath(genpath('../CTV_code/')) % linux/MacOS platform
 addpath(genpath('../ccstv_junheng/')) % windows platform
 %% load data
-hsi_name = 'pure_DCmall';
+hsi_name = 'pure_DCmall_small';
 load([hsi_name,'.mat'])
 clean_data=Ori_H;
 clean_data       = Normalize(clean_data);
