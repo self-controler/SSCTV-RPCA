@@ -1,5 +1,4 @@
 clear all;clc;
-% addpath(genpath('../SSCTV-RPCA-main/')) % linux/MacOS platform
 addpath(genpath('../SSCTV-RPCA-main/')) % windows platform
 %% load data
 hsi_name = 'pure_DCmall_small';
