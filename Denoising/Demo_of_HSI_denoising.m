@@ -17,7 +17,7 @@ D = reshape(noise_data,[M*N,p]);
 %% SSCTV-RPCA
 it =2;
 fprintf('======== SSCTV-RPCA  ========\n')
-opts.rho = 1.05;
+opts.rho = 1.1;
 opts.lambda = 2/sqrt(M*N); 
 tic;
 [csstv_out,E] = ssctv_rpca(noise_data,opts);
