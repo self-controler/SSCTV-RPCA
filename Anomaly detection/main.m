@@ -275,27 +275,7 @@ opts.lambda = 1/sqrt(no_rows*no_bands);
     fprintf('AUC of TRPCA:%f\n',AUC(10));
     en_list = [en_list,10];
 end
-%% tCTV
-if Run_CTV == 1
-    addpath(genpath('F:\CTV正则\TRPCA_CTV\实验\TRPCA-CTV'));
-    opts = [];
-    opts.rho = 1.5;
-    opts.tol = 1e-5;
-    opts.directions = [1 2];
-%     lambda = 1/sqrt(min(no_lines,no_rows)*no_bands);
-    lambda = 0.1;
-    [~,E,~,~,~] =TRPCA_CTV_AD(M_3D,lambda,opts);
-    re{8}=reshape(sqrt(sum(E.^2,3)),[no_lines,no_rows]);
-    [tpr{8},fpr{8},~] = roc(GT2(:)',re{8}(:)');
-    AUC(8)=trapz(fpr{8},tpr{8});%figure
-    fprintf('AUC of tCTV:%f\n',AUC(8));
-    en_list = [en_list, 8];
-    
-    % R7value = reshape(re{7},1,no_lines*no_rows);
-    % [FA7,PD7] = perfcurve(GT2(:)',R7value,'1') ;
-    % AUC7_new=-sum((FA7(1:end-1)-FA7(2:end)).*(PD7(2:end)+PD7(1:end-1))/2);
-    % fprintf('AUC:%f\n',AUC7_new);
-end
+
 
 
 
